@@ -64,5 +64,30 @@ public class MatrizAdjunta {
             return null;
         }
     }
+    // aqui calcula la matriz adjunta (cofactores transpuestos)
+    public static double[][] matrizAdjunta(double[][] matriz) {
+        int n = matriz.length;
+
+        if (n != matriz[0].length) return null; // Verificar que sea cuadrada
+
+        double[][] cofactores = new double[n][n];
+
+        // calcula los cofactores
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                cofactores[i][j] = Math.pow(-1, i + j) * determinante(matrizMenor(matriz, i, j));
+            }
+        }
+
+        // transpone es decir (adjunta = matriz de cofactores transpuesta)
+        double[][] adjunta = new double[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                adjunta[i][j] = cofactores[j][i]; 
+            }
+        }
+
+        return adjunta;
+    }
 
 }
