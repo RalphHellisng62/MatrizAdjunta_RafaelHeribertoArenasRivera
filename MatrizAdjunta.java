@@ -119,5 +119,14 @@ public class MatrizAdjunta {
         }
         return det;
     }
+    // imprime la matriz
+    public static void imprimirMatriz(double[][] matriz) {
+        for (double[] fila : matriz) {
+            for (double valor : fila) {
+                System.out.printf("%.2f ", valor);
+            }
+            System.out.println();
+        }
+    }
 
 }
