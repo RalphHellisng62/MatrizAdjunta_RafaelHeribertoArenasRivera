@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class MatrizAdjunta {
@@ -128,5 +130,17 @@ public class MatrizAdjunta {
             System.out.println();
         }
     }
-
+    // guarda la matriz en otro archivo
+    public static void escribirArchivo(double[][] matriz, String nombreArchivo) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            for (double[] fila : matriz) {
+                for (double valor : fila) {
+                    bw.write(String.format("%.4f ", valor));
+                }
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("error al escribir archivo: " + e.getMessage());
+        }
+    }
 }
