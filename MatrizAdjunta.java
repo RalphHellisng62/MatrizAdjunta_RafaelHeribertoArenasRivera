@@ -107,5 +107,17 @@ public class MatrizAdjunta {
         }
         return menor;
     }
+    // se determina la matriz 
+    public static double determinante(double[][] matriz) {
+        int n = matriz.length;
+        if (n == 1) return matriz[0][0];
+        if (n == 2) return (matriz[0][0] * matriz[1][1]) - (matriz[0][1] * matriz[1][0]);
+
+        double det = 0;
+        for (int j = 0; j < n; j++) {
+            det += matriz[0][j] * Math.pow(-1, 0 + j) * determinante(matrizMenor(matriz, 0, j));
+        }
+        return det;
+    }
 
 }
