@@ -89,5 +89,23 @@ public class MatrizAdjunta {
 
         return adjunta;
     }
+     // aqui se obtiene la matriz menor
+    public static double[][] matrizMenor(double[][] matriz, int fila, int col) {
+        int n = matriz.length;
+        double[][] menor = new double[n - 1][n - 1];
+        int r = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (i == fila) continue;
+            int c = 0;
+            for (int j = 0; j < n; j++) {
+                if (j == col) continue;
+                menor[r][c] = matriz[i][j];
+                c++;
+            }
+            r++;
+        }
+        return menor;
+    }
 
 }
